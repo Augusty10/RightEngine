@@ -10,7 +10,7 @@ model's raw output.
 User prompt
     │
     ├──► OpenAI  ──┐
-    ├──► Claude  ──┼──► (parallel, isolated failures) ──► Claude (evaluator)
+    ├──► Claude  ──┼──► (parallel, isolated failures) ──► Open AI  (evaluator)
     └──► Gemini  ──┘                                          │
                                                                 ▼
                                                      Synthesized final answer
