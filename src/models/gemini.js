@@ -6,6 +6,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
  * @returns {Promise<string>} The model's text response.
  * @throws {Error} If the API key is missing or the request fails.
  */
+
 export async function getGeminiResponse(prompt) {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {

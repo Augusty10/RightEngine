@@ -9,6 +9,7 @@ import Anthropic from "@anthropic-ai/sdk";
  * @returns {Promise<string>} The model's text response.
  * @throws {Error} If the API key is missing or the request fails.
  */
+
 export async function getClaudeResponse(prompt, options = {}) {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
