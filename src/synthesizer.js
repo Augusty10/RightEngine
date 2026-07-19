@@ -1,4 +1,5 @@
-import { getClaudeResponse } from "./models/claude.js";
+import { getOpenAIResponse} from "./models/openai.js";
+
 
 /**
  * Builds the evaluator prompt that asks the synthesizer model to compare
@@ -8,6 +9,7 @@ import { getClaudeResponse } from "./models/claude.js";
  * @param {{model: string, response: string}[]} successfulResults - only fulfilled results
  * @returns {string}
  */
+
 function buildSynthesisPrompt(originalPrompt, successfulResults) {
   const candidateBlock = successfulResults
     .map((r, i) => `--- Candidate Answer ${i + 1} (from ${r.model}) ---\n${r.response}`)
@@ -53,8 +55,8 @@ export async function synthesizeFinalAnswer(originalPrompt, successfulResults) {
   // If only one model succeeded, there's nothing to compare — still run it
   // through the synthesizer so the user gets a consistently formatted answer,
   // but note the limitation explicitly rather than pretending to compare.
-  const synthesizerModel = process.env.SYNTHESIZER_MODEL || process.env.CLAUDE_MODEL;
+  const synthesizerModel = process.env.SYNTHESIZER_MODEL || process.env.OPENAI_MODEL;
 
   const prompt = buildSynthesisPrompt(originalPrompt, successfulResults);
-  return getClaudeResponse(prompt, { model: synthesizerModel, maxTokens: 1536 });
+  return getOpenAIResponse(prompt, { model: synthesizerModel, maxTokens: 1536 });
 }
