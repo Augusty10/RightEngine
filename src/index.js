@@ -8,12 +8,14 @@ import { collectModelResponses } from "./orchestrator.js";
 import { synthesizeFinalAnswer } from "./synthesizer.js";
 import { sectionHeader, divider, printModelResult, printFinalAnswer } from "./utils/format.js";
 
+
 function printBanner() {
   console.log(chalk.bold.magenta("\n=================================================="));
   console.log(chalk.bold.magenta("  Self-Consistency Multi-Model AI CLI"));
   console.log(chalk.bold.magenta("  OpenAI + Claude + Gemini -> synthesized answer"));
   console.log(chalk.bold.magenta("==================================================\n"));
 }
+
 
 function checkConfiguredProviders() {
   const configured = [];
